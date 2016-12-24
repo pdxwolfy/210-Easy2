@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <title>javascript</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="assert.js"></script>
+  </head>
+
+  <body>
+    <pre id="console">
+      <script>
+/* global show, log, theEnd */
+
+'use strict';
+
+// Understand the problem
+// - input
+// - output
+// - edge cases
+// - bad data?
+// - handling failure
+// - test cases
+// - ask questions
+
+
+// multipleOf3Or5
+//   return true if number is multiple of 3
+//   return true if number is multiple of 5
+//   return false
+// sumMultiples:
+//   total is 0
+//   for each number from 1 to max
+//     add number to total is is multiple of 3 or 5
+//   return total
+
+function multipleOf3Or5(number) {
+  return number % 3 === 0 || number % 5 === 0;
+}
+
+function multisum(max) {
+  var number;
+  var total = 0;
+
+  for (number = 0; number <= max; ++number) {
+    if (multipleOf3Or5(number)) {
+      total += number;
+    }
+  }
+
+  return total;
+}
+
+/* eslint-disable vars-on-top */
+/* eslint-disable no-magic-numbers */
+log(multisum(1),    0);
+log(multisum(2),    0);
+log(multisum(3),    3);
+log(multisum(5),    8);
+log(multisum(10),   33);
+log(multisum(1000), 234168);
+theEnd();
+      </script>
+    </pre>
+  </body>
+</html>
