@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <title>javascript</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="assert.js"></script>
+  </head>
+
+  <body>
+    <pre id="console">
+      <script>
+/* global show, log, theEnd */
+
+'use strict';
+
+// - Understand the problem
+//   * implicit knowledge
+//   * terminology
+//   * ask questions
+// - Test cases
+//   * input
+//   * output
+//   * edge cases
+//   * handling failure
+//   * ask questions
+// - Data Structure
+//   * input
+//   * output
+//   * rules/logic as data
+// - Algorithm
+//   * use language of data structure (map, split, etc)
+// - Abstraction
+//   * 1-2 sentences
+//*****************************************************************************
+// The problem:
+//   - print a string inside a box.
+// Test cases:
+//   "To boldly go where no one has gone before."
+//   => +--------------------------------------------+
+//   => |                                            |
+//   => | To boldly go where no one has gone before. |
+//   => |                                            |
+//   => +--------------------------------------------+
+//
+//   '' => '+--+'
+//         '|  |'
+//         '|  |'
+//         '|  |'
+//         '+--+'
+// Data structure
+//   input: string
+//   output: none
+//   log: string
+// Algorithm
+
+//   - function printLine(edge, filler, content)
+//       - print edge
+//       - print fillter
+//   - function print border:
+//       - print '+', string.length + 2 hyphens, '+'
+//   - function print empty line:
+//       - print '|', string.spaces + 2 hyphens, '|'
+//
+//   - print border
+//   - print empty line
+//   - print message in box
+//       - print '| ', string, ' |'
+//   - print empty line
+//   - print border
+//
+
+function repeat(char, width) {
+  var result = '';
+  var number;
+
+  for (number = 0; number < width; ++number) {
+    result += char;
+  }
+
+  return result;
+}
+
+function printBorder(width) {
+  show('+' + repeat('-', width) + '+');
+}
+
+function printEmpty(width) {
+  show('|' + repeat(' ', width) + '|');
+}
+
+function printInBox(message) {
+  var width = message.length;
+  printBorder(width + 2);
+  printEmpty(width + 2);
+  show('| ' + message + ' |');
+  printEmpty(width + 2);
+  printBorder(width + 2);
+}
+
+/* eslint-disable vars-on-top */
+/* eslint-disable no-magic-numbers */
+printInBox('To boldly go where no one has gone before.');
+printInBox('');
+theEnd();
+      </script>
+    </pre>
+  </body>
+</html>

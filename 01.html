@@ -14,51 +14,58 @@
 
 'use strict';
 
-// Understand the problem
-// - input
-// - output
-// - edge cases
-// - bad data?
-// - handling failure
-// - test cases
-// - ask questions
+// - Understand the problem
+//   * implicit knowledge
+//   * terminology
+//   * ask questions
+// - Test cases
+//   * input
+//   * output
+//   * edge cases
+//   * handling failure
+//   * ask questions
+// - Data Structure
+//   * input
+//   * output
+//   * rules/logic as data
+// - Algorithm
+//   * use language of data structure (map, split, etc)
+// - Abstraction
+//   * 1-2 sentences
+//*****************************************************************************
+// The problem:
+//   - Pass a String argument
+//   - Return a new String
+//   - New String contains value of original string with all repeating
+//     characters collapse to a single character
+// Test cases:
+//   - crunch('ddaaiillyy ddoouubbllee');  // 'daily double'
+//   - crunch('4444abcabccba');            // '4abcabcba'
+//   - crunch('ggggggggggggggg');          // 'g'
+//   - crunch('a');                        // 'a'
+//   - crunch('');                         // ''
+//   - Ignore errors
+//     - crunch(5566);                     // doesn't matter
+//     - crunch([1,2,3]);                  // doesn't matter
+// Data structure
+//   input: string
+//   output: string
+//   rules: replace each repeating string with single character
+// Algorithm
+//   Replace all repeating characters with single character
+//     - regex: s/([.])\1+/\1/g
 
-
-// multipleOf3Or5
-//   return true if number is multiple of 3
-//   return true if number is multiple of 5
-//   return false
-// sumMultiples:
-//   total is 0
-//   for each number from 1 to max
-//     add number to total is is multiple of 3 or 5
-//   return total
-
-function multipleOf3Or5(number) {
-  return number % 3 === 0 || number % 5 === 0;
-}
-
-function multisum(max) {
-  var number;
-  var total = 0;
-
-  for (number = 0; number <= max; ++number) {
-    if (multipleOf3Or5(number)) {
-      total += number;
-    }
-  }
-
-  return total;
+function crunch(string) {
+  return string.replace(/(.)\1+/g, '$1');
 }
 
 /* eslint-disable vars-on-top */
 /* eslint-disable no-magic-numbers */
-log(multisum(1),    0);
-log(multisum(2),    0);
-log(multisum(3),    3);
-log(multisum(5),    8);
-log(multisum(10),   33);
-log(multisum(1000), 234168);
+log(crunch('ddaaiillyy ddoouubbllee'), 'daily double');
+log(crunch('4444abcabccba'),           '4abcabcba');
+log(crunch('ggggggggggggggg'),         'g');
+log(crunch('a'),                       'a');
+log(crunch(''),                        '');
 theEnd();
       </script>
     </pre>

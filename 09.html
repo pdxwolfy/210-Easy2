@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <title>javascript</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="assert.js"></script>
+  </head>
+
+  <body>
+    <pre id="console">
+      <script>
+/* global show, log, theEnd */
+
+'use strict';
+
+// - Understand the problem
+//   * implicit knowledge
+//   * terminology
+//   * ask questions
+//   * input
+//   * output
+// - Test cases
+//   * edge cases
+//   * handling failure
+//   * ask questions
+// - Data Structure
+//   * input
+//   * output
+//   * rules/logic as data
+// - Algorithm
+//   * use language of data structure (map, split, etc)
+// - Abstraction
+//   * 1-2 sentences
+//*****************************************************************************
+// The problem:
+//   - a string contains some words and non-alphabetic characters
+//   - replace all non-alpha characters with spaces
+//   - compress multiple spaces in the result to single spaces
+//   - input: a string passed as an argument
+//   - output: a new string with the desired result
+// Test cases:
+//   - cleanUp('---what\'s my +*& line?');      // ' what s my line '
+//   - edge cases:
+//     + empty string: '' -> ''
+//     + single alpha character string: 'x' -> 'x'
+//     + single non-alpha character string: '+' -> ' '
+//     + alpha characters bound by spaces: '   a   ' -> ' a '
+// Data structure
+//   - input: an array
+//   - output: a string
+// Algorithm
+//   - replace non-alpha characters with spaces
+//   - replace multiple spaces with a single space
+// Abstraction
+
+function cleanUp(string) {
+  return string.replace(/[^a-z]/ig, ' ').replace(/ +/g, ' ');
+}
+
+/* eslint-disable vars-on-top */
+/* eslint-disable no-magic-numbers */
+log(cleanUp('---what\'s my +*& line?'), ' what s my line ');
+//   - edge cases:
+log(cleanUp(''), '');
+log(cleanUp('x'), 'x');
+log(cleanUp('+'), ' ');
+log(cleanUp('   a   '), ' a ');
+theEnd();
+      </script>
+    </pre>
+  </body>
+</html>

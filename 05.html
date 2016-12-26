@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <title>javascript</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="assert.js"></script>
+  </head>
+
+  <body>
+    <pre id="console">
+      <script>
+/* global show, log, theEnd */
+
+'use strict';
+
+// - Understand the problem
+//   * implicit knowledge
+//   * terminology
+//   * ask questions
+// - Test cases
+//   * input
+//   * output
+//   * edge cases
+//   * handling failure
+//   * ask questions
+// - Data Structure
+//   * input
+//   * output
+//   * rules/logic as data
+// - Algorithm
+//   * use language of data structure (map, split, etc)
+// - Abstraction
+//   * 1-2 sentences
+//*****************************************************************************
+// The problem:
+//   * display a right-angled triange with adjacent sides of length `n`
+//   * triangle is displayed as discrete `*` chracters
+//   * right angle is at lower right of triangle.
+//   * one side of the triangle is horizontal, another is vertical.
+// Test cases:
+//   - triangle(5)
+//
+//         *
+//        **
+//       ***
+//      ****
+//     *****
+//
+//   - triangle(9)
+//
+//             *
+//            **
+//           ***
+//          ****
+//         *****
+//        ******
+//       *******
+//      ********
+//     *********
+//
+//   - triangle(0)
+//
+//   - triangle(1)
+//
+//     *
+//
+//   - triangle(2)
+//
+//      *
+//     **
+//
+//   - triangle(4)
+//
+//        *
+//       **
+//      ***
+//     ****
+//
+// Data structure
+//   - input: a number (the number of stars for the height and width)
+//   - output: a triangle
+//     + first line: (n - 1) spaces, 1 star
+//     + second line: (n - 2) spaces, 2 stars
+//     + third line: (n - 3) spaces, 3 stars
+//     + nth line: (n - n) spaces, n stars
+//   - edge cases
+//     + n = 0
+//     + n = 1
+//     + n = 2
+// Algorithm
+//   - for i in 1 to n
+//     - print n - i spaces followed by i stars
+// Abstraction
+
+function repeat(char, width) {
+  var result = '';
+  var number;
+
+  for (number = 0; number < width; ++number) {
+    result += char;
+  }
+
+  return result;
+}
+
+function triangle(size) {
+  var line;
+
+  show(size);
+  for (line = 1; line <= size; ++line) {
+    show(repeat(' ', size - line) + repeat('*', line));
+  }
+
+  show('');
+}
+
+/* eslint-disable vars-on-top */
+/* eslint-disable no-magic-numbers */
+triangle(5);
+triangle(9);
+triangle(0);
+triangle(1);
+triangle(2);
+triangle(4);
+theEnd();
+      </script>
+    </pre>
+  </body>
+</html>

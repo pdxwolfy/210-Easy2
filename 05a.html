@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <title>javascript</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="assert.js"></script>
+  </head>
+
+  <body>
+    <pre id="console">
+      <script>
+'use strict';
+
+function repeat(char, width) {
+  var result = '';
+  var number;
+
+  for (number = 0; number < width; ++number) {
+    result += char;
+  }
+
+  return result;
+}
+
+function triangle(size) {
+  var line;
+
+  for (line = 1; line <= size; ++line) {
+    console.log(repeat(' ', size - line) + repeat('*', line));
+  }
+}
+      </script>
+    </pre>
+  </body>
+</html>

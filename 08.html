@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <title>javascript</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="assert.js"></script>
+  </head>
+
+  <body>
+    <pre id="console">
+      <script>
+/* global show, log, theEnd */
+
+'use strict';
+
+// - Understand the problem
+//   * implicit knowledge
+//   * terminology
+//   * ask questions
+// - Test cases
+//   * input
+//   * output
+//   * edge cases
+//   * handling failure
+//   * ask questions
+// - Data Structure
+//   * input
+//   * output
+//   * rules/logic as data
+// - Algorithm
+//   * use language of data structure (map, split, etc)
+// - Abstraction
+//   * 1-2 sentences
+//*****************************************************************************
+// The problem:
+//   - Compute average of 3 numbers (scores)
+//   - Covert averae to letter grade
+//     + [90,100] => 'A'
+//     + [80, 90) => 'B'
+//     + [70, 80) => 'C'
+//     + [60, 70) => 'D'
+//     + [0,  60) => 'F'
+//   - Return letter grade
+// Test cases:
+//   - inputs: 3 numbers all between 0 and 100 icnlusive
+//   - outputs: letter grade ('A', 'B', 'C', 'D', 'F')
+//   - Errors: ignore
+//   - getGrade(95, 90, 93) // => 92 => "A"
+//   - getGrade(99, 89, 79) // => 89 => "B"
+//   - getGrade(99, 89, 81) // => 89 => "B"
+//   - getGrade(99, 90, 81) // => 90 => "B"
+//   - getGrade(70, 70, 70) // => 70 => "C"
+//   - getGrade(79, 79, 79) // => 79 => "C"
+//   - getGrade(50, 50, 95) // => 65 => "D"
+//   - getGrade(50, 50, 60) // => 53 => "F"
+//   - getGrade( 0,  0,  0) // =>  0 => "F"
+// Data structure
+//   - input: 3 number arguments between 0 and 100 inclusive
+//   - output: letter grade ('A', 'B', 'C', 'D', 'F')
+// Algorithm
+//   function: compute average of listOfNumbers
+//     - reduce listOfNumbers with +
+//     - divide result by number of items in listOfNumbers
+//   function: convert average to grade
+//     - return 'A' if 90 <= average <= 100
+//     - return 'B' if 80 <= average <   90
+//     - return 'C' if 70 <= average <   80
+//     - return 'D' if 60 <= average <   70
+//     - return 'F' if  0 <= average <   60
+//   function: get grade
+//     - compute average of 3 numbers
+//     - convert average to grade
+//   - get grade(scores...)
+// Abstraction
+
+function computeAverage(listOfNumbers) {
+  var total = listOfNumbers.reduce(
+    function sum(accumulator, value) {
+      return accumulator + value;
+    },
+    0
+  );
+
+  return total / 3;
+}
+
+function convertAverageToGrade(average) {
+  if (average >= 90) {
+    return 'A';
+  } else if (average >= 80) {
+    return 'B';
+  } else if (average >= 70) {
+    return 'C';
+  } else if (average >= 60) {
+    return 'D';
+  } else {
+    return 'F';
+  }
+}
+
+function getGrade(score1, score2, score3) {
+  var average = computeAverage([score1, score2, score3]);
+  return convertAverageToGrade(average);
+}
+
+/* eslint-disable vars-on-top */
+/* eslint-disable no-magic-numbers */
+log(getGrade(95, 90, 93), 'A');
+log(getGrade(99, 89, 79), 'B');
+log(getGrade(99, 89, 81), 'B');
+log(getGrade(99, 90, 81), 'A');
+log(getGrade(70, 70, 70), 'C');
+log(getGrade(79, 79, 79), 'C');
+log(getGrade(50, 50, 95), 'D');
+log(getGrade(50, 50, 60), 'F');
+log(getGrade(0, 0, 0), 'F');
+theEnd();
+      </script>
+    </pre>
+  </body>
+</html>

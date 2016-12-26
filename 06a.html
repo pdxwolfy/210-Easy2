@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <title>javascript</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="assert.js"></script>
+  </head>
+
+  <body>
+    <pre id="console">
+      <script>
+'use strict';
+
+function madlib(sentence) {
+  var inputs = {
+    noun:      prompt('Please enter a noun:'),
+    verb:      prompt('Please enter a verb:'),
+    adjective: prompt('Please enter an adjective:'),
+    adverb:    prompt('Please enter an adverb:'),
+  };
+
+  return Object.keys(inputs).reduce(
+    function substitute(text, wordType) {
+      return text.replace('<' + wordType + '>', inputs[wordType]);
+    },
+    sentence
+  );
+}
+
+console.log(madlib('The <adjective> <noun> <verb>s <adverb>.'));
+      </script>
+    </pre>
+  </body>
+</html>

@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <title>javascript</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="assert.js"></script>
+  </head>
+
+  <body>
+    <pre id="console">
+      <script>
+/* global show, log, theEnd */
+
+'use strict';
+
+// - Understand the problem
+//   * implicit knowledge
+//   * terminology
+//   * ask questions
+//   * input
+//   * output
+// - Test cases
+//   * edge cases
+//   * handling failure
+//   * ask questions
+// - Data Structure
+//   * input
+//   * output
+//   * rules/logic as data
+// - Algorithm
+//   * use language of data structure (map, split, etc)
+// - Abstraction
+//   * 1-2 sentences
+//*****************************************************************************
+// The problem:
+//   - convert a year to a century number followed by st, nd, rd, or th
+//   - assume that a century begin in years whose rightmost digits are 01.
+//   - suffix:
+//     + st: last digit is `1`, but next to last digit is NOT `1`
+//     + nd: last digit is `2`, but next to last digit is NOT `1`
+//     + rd: last digit is `3`, but next to last digit is NOT `1`
+//     + th: all other centuries
+// Test cases:
+//   - century(2000);        // '20th'
+//   - century(2001);        // '21st'
+//   - century(1965);        // '20th'
+//   - century(256);         // '3rd'
+//   - century(5);           // '1st'
+//   - century(10103);       // '102nd'
+//   - century(1052);        // '11th'
+//   - century(1127);        // '12th'
+//   - century(11201);       // '113th'
+//   - Edge case:
+//     - century(1);         // '1st'
+//     - century(100);       // '1st'
+//     - century(101);       // '2nd'
+// Data structure
+//   - input: a number
+//   - output: a string
+// Algorithm
+//   - century number = (year - 1) / 100
+//   - suffix = 'st', 'nd', 'rd', or 'th'
+// Abstraction
+
+function computeCenturyNumber(year) {
+  return parseInt((year - 1) / 100, 10) + 1;
+}
+
+function suffix(centuryNumber) {
+  var rem100 = centuryNumber % 100;
+  var rem10 = centuryNumber % 10;
+
+  if (rem100 >= 11 && rem100 <= 13) {
+    return 'th';
+  } else if (rem10 === 1) {
+    return 'st';
+  } else if (rem10 === 2) {
+    return 'nd';
+  } else if (rem10 === 3) {
+    return 'rd';
+  } else {
+    return 'th';
+  }
+}
+
+function century(year) {
+  var centuryNumber = computeCenturyNumber(year);
+  return centuryNumber.toString() + suffix(centuryNumber);
+}
+
+/* eslint-disable vars-on-top */
+/* eslint-disable no-magic-numbers */
+log(century(2000),  '20th');
+log(century(2001),  '21st');
+log(century(1965),  '20th');
+log(century(256),   '3rd');
+log(century(5),     '1st');
+log(century(10103), '102nd');
+log(century(1052),  '11th');
+log(century(1127),  '12th');
+log(century(11201), '113th');
+log(century(1),     '1st');
+log(century(100),   '1st');
+log(century(101),   '2nd');
+theEnd();
+      </script>
+    </pre>
+  </body>
+</html>

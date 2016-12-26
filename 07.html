@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <title>javascript</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="assert.js"></script>
+  </head>
+
+  <body>
+    <pre id="console">
+      <script>
+/* global show, log, theEnd */
+
+'use strict';
+
+// - Understand the problem
+//   * implicit knowledge
+//   * terminology
+//   * ask questions
+// - Test cases
+//   * input
+//   * output
+//   * edge cases
+//   * handling failure
+//   * ask questions
+// - Data Structure
+//   * input
+//   * output
+//   * rules/logic as data
+// - Algorithm
+//   * use language of data structure (map, split, etc)
+// - Abstraction
+//   * 1-2 sentences
+//*****************************************************************************
+// The problem:
+//   - Double numbers have an even length, and the left side is identical to the
+//     right side.
+//   - Return a number as-is if it is a double number, otherwise, return the
+//     result of multiplying the number by 2.
+// Test cases:
+//   - Errors: ignore
+//   - twice(37)     // 74
+//   - twice(44)     // 44
+//   - twice(334433) // 668866
+//   - twice(444)    // 888
+//   - twice(107)    // 214
+//   - twice(103103) // 103103
+//   - twice(3333)   // 3333
+//   - twice(7676)   // 7676
+// Data structure
+//   - input: non-negative integer as argument
+//   - output:
+//     - 2 times argument unless argument is a double number
+//     - argument if argument is a double number
+// Algorithm
+//   - function: is double number(number)
+//       return false if number length is odd
+//       return true if left side of number === right side of number
+//       return false
+//   - return argument if argument is double number
+//   - return 2 * argument otherwise
+// Abstraction
+
+function isDoubleNumber(number) {
+  var asString = String(number);
+  var size = asString.length;
+
+  if (size % 2 === 1) {
+    return false;
+  } else {
+    return asString.substr(0, size / 2) === asString.substr(size / 2);
+  }
+}
+
+function twice(number) {
+  return isDoubleNumber(number) ? number : (2 * number);
+}
+
+/* eslint-disable vars-on-top */
+/* eslint-disable no-magic-numbers */
+log(twice(37),     74);
+log(twice(44),     44);
+log(twice(334433), 668866);
+log(twice(444),    888);
+log(twice(107),    214);
+log(twice(103103), 103103);
+log(twice(3333),   3333);
+log(twice(7676),   7676);
+theEnd();
+      </script>
+    </pre>
+  </body>
+</html>
